@@ -1,0 +1,2318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#16a34a">
+<meta name="description" content="PelzLex — A new word every day. Journey from A to Z throughout the year.">
+
+<title>PelzLex — A New Word Every Day</title>
+
+<style>
+:root{
+  --green:#16a34a;
+  --green2:#22c55e;
+  --green-dark:#15803d;
+  --green-soft:#eaf8ef;
+  --black:#0b0f0c;
+  --text:#101412;
+  --muted:#6b756f;
+  --bg:#f5f7f6;
+  --card:#ffffff;
+  --border:#e3e9e5;
+  --shadow:0 20px 55px rgba(0,0,0,.08);
+  --radius:26px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  transition:.3s;
+}
+
+body.dark{
+  --bg:#07100a;
+  --card:#0d1710;
+  --text:#f4fff7;
+  --muted:#9aa99f;
+  --border:#1d3023;
+  --green-soft:#102c18;
+  --shadow:0 20px 55px rgba(0,0,0,.35);
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.dark header{
+  background:rgba(7,16,10,.88);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  height:76px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+}
+
+.brand-mark{
+  width:43px;
+  height:43px;
+  border-radius:13px;
+  background:var(--green);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-size:21px;
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(22,163,74,.25);
+}
+
+.brand-text strong{
+  display:block;
+  font-size:18px;
+  letter-spacing:-.5px;
+}
+
+.brand-text span{
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1.2px;
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.icon-btn{
+  width:43px;
+  height:43px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  border-radius:14px;
+  cursor:pointer;
+  font-size:18px;
+  transition:.2s;
+}
+
+.icon-btn:hover{
+  transform:translateY(-2px);
+  border-color:var(--green);
+  color:var(--green);
+}
+
+/* ================= MAIN ================= */
+
+main{
+  max-width:1200px;
+  margin:auto;
+  padding:35px 22px 110px;
+}
+
+.page{
+  display:none;
+  animation:fade .35s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  padding:35px 0 25px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:30px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--green);
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:1.8px;
+  margin-bottom:14px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,78px);
+  line-height:.98;
+  letter-spacing:-4px;
+  max-width:700px;
+  margin-bottom:22px;
+}
+
+.hero h1 span{
+  color:var(--green);
+}
+
+.hero p{
+  max-width:600px;
+  color:var(--muted);
+  font-size:17px;
+}
+
+.hero-side{
+  min-height:240px;
+  border-radius:32px;
+  background:var(--black);
+  color:white;
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-side:before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:var(--green);
+  right:-90px;
+  top:-90px;
+  opacity:.8;
+}
+
+.hero-side h3{
+  font-size:14px;
+  letter-spacing:1px;
+  position:relative;
+}
+
+.hero-side .big{
+  font-size:70px;
+  font-weight:1000;
+  line-height:1;
+  margin-top:20px;
+  position:relative;
+}
+
+.hero-side p{
+  margin-top:10px;
+  color:#c6d0ca;
+  position:relative;
+}
+
+/* ================= WORD CARD ================= */
+
+.word-section{
+  margin-top:25px;
+}
+
+.word-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:34px;
+  box-shadow:var(--shadow);
+  padding:clamp(25px,5vw,55px);
+  position:relative;
+  overflow:hidden;
+}
+
+.word-card:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:var(--green-soft);
+  right:-120px;
+  bottom:-130px;
+  z-index:0;
+}
+
+.word-content{
+  position:relative;
+  z-index:1;
+}
+
+.word-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.date{
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+
+.category-tag{
+  background:var(--green-soft);
+  color:var(--green-dark);
+  border-radius:100px;
+  padding:7px 12px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.word-display{
+  margin:20px 0 30px;
+}
+
+.word-label{
+  color:var(--green);
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+.word{
+  display:inline-block;
+  font-family:Georgia,serif;
+  font-size:clamp(48px,9vw,105px);
+  line-height:.95;
+  letter-spacing:-5px;
+  font-weight:900;
+  position:relative;
+}
+
+.word:after{
+  content:"";
+  position:absolute;
+  left:-8px;
+  right:-8px;
+  bottom:8px;
+  height:18px;
+  background:rgba(34,197,94,.22);
+  transform:rotate(-1.5deg);
+  z-index:-1;
+  border-radius:30% 8% 25% 10%;
+}
+
+.pronunciation{
+  margin-top:15px;
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.pronunciation code{
+  font-family:monospace;
+  font-size:15px;
+  color:var(--muted);
+}
+
+.part{
+  font-style:italic;
+  font-weight:800;
+  color:var(--green);
+}
+
+.definition{
+  max-width:800px;
+  margin-top:25px;
+}
+
+.definition h3,
+.example h3,
+.synonyms h3{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+
+.definition p{
+  font-size:20px;
+  font-weight:650;
+  line-height:1.5;
+}
+
+.example{
+  max-width:800px;
+  margin-top:25px;
+  padding:20px;
+  border-left:4px solid var(--green);
+  background:var(--green-soft);
+  border-radius:0 16px 16px 0;
+}
+
+.example p{
+  font-family:Georgia,serif;
+  font-size:18px;
+}
+
+.synonyms{
+  margin-top:24px;
+}
+
+.synonym-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.synonym{
+  border:1px solid var(--border);
+  padding:7px 12px;
+  border-radius:100px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.btn{
+  border:none;
+  border-radius:15px;
+  padding:13px 17px;
+  font-weight:900;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:var(--green);
+  color:white;
+}
+
+.btn-secondary{
+  background:var(--green-soft);
+  color:var(--green-dark);
+}
+
+.btn-outline{
+  background:var(--card);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+/* ================= SECTION ================= */
+
+.section{
+  margin-top:55px;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.section-head h2{
+  font-size:28px;
+  letter-spacing:-1px;
+}
+
+.section-head p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ================= MONTHS ================= */
+
+.month-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+}
+
+.month{
+  padding:20px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.month:hover{
+  transform:translateY(-4px);
+  border-color:var(--green);
+}
+
+.month.current{
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+.month-name{
+  font-size:11px;
+  font-weight:1000;
+  letter-spacing:1.5px;
+}
+
+.month-letters{
+  font-size:25px;
+  font-weight:1000;
+  margin-top:5px;
+}
+
+.month-status{
+  font-size:11px;
+  margin-top:6px;
+  opacity:.7;
+}
+
+/* ================= A-Z ================= */
+
+.alphabet{
+  display:grid;
+  grid-template-columns:repeat(13,1fr);
+  gap:8px;
+}
+
+.letter{
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:var(--card);
+  border:1px solid var(--border);
+  font-weight:1000;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.letter:hover,
+.letter.active{
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.search-box input{
+  flex:1;
+  min-width:0;
+  padding:16px 18px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:var(--card);
+  color:var(--text);
+  outline:none;
+  font-size:15px;
+}
+
+.search-box input:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 4px rgba(22,163,74,.1);
+}
+
+.library-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.word-item{
+  padding:22px;
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.word-item:hover{
+  transform:translateY(-3px);
+  border-color:var(--green);
+}
+
+.word-item strong{
+  font-family:Georgia,serif;
+  font-size:25px;
+}
+
+.word-item small{
+  display:block;
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.empty{
+  padding:40px;
+  text-align:center;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  color:var(--muted);
+}
+
+/* ================= ABOUT ================= */
+
+.about-card{
+  background:var(--black);
+  color:white;
+  border-radius:30px;
+  padding:35px;
+}
+
+.about-card h2{
+  font-size:35px;
+  margin-bottom:12px;
+}
+
+.about-card p{
+  color:#cbd4ce;
+  max-width:750px;
+}
+
+.developer{
+  margin-top:22px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  background:rgba(255,255,255,.05);
+}
+
+.developer strong{
+  font-size:20px;
+}
+
+.developer span{
+  display:block;
+  color:#9be7b1;
+  font-weight:800;
+  margin-top:4px;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+  position:fixed;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:999;
+  width:min(650px,calc(100% - 24px));
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border);
+  box-shadow:0 18px 45px rgba(0,0,0,.12);
+  border-radius:22px;
+  padding:7px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+}
+
+.dark .bottom-nav{
+  background:rgba(13,23,16,.92);
+}
+
+.nav-item{
+  border:none;
+  background:transparent;
+  color:var(--muted);
+  padding:10px 5px;
+  border-radius:16px;
+  cursor:pointer;
+  font-size:10px;
+  font-weight:900;
+}
+
+.nav-item .nav-icon{
+  display:block;
+  font-size:18px;
+  margin-bottom:2px;
+}
+
+.nav-item.active{
+  background:var(--green-soft);
+  color:var(--green-dark);
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:95px;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--black);
+  color:white;
+  padding:12px 17px;
+  border-radius:13px;
+  font-size:13px;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:2000;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  text-align:center;
+  color:var(--muted);
+  padding:40px 15px 120px;
+  font-size:12px;
+}
+
+footer strong{
+  color:var(--green);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .month-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .library-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .alphabet{
+    grid-template-columns:repeat(9,1fr);
+  }
+}
+
+@media(max-width:600px){
+  main{
+    padding:22px 15px 100px;
+  }
+
+  .nav{
+    padding:0 15px;
+  }
+
+  .brand-text span{
+    display:none;
+  }
+
+  .hero{
+    padding-top:25px;
+  }
+
+  .hero h1{
+    letter-spacing:-2.5px;
+    font-size:47px;
+  }
+
+  .hero-side{
+    min-height:190px;
+  }
+
+  .hero-side .big{
+    font-size:55px;
+  }
+
+  .word-card{
+    padding:25px 20px;
+    border-radius:25px;
+  }
+
+  .word{
+    font-size:53px;
+    letter-spacing:-3px;
+  }
+
+  .word-top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .definition p{
+    font-size:17px;
+  }
+
+  .month-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .library-grid{
+    grid-template-columns:1fr;
+  }
+
+  .alphabet{
+    grid-template-columns:repeat(7,1fr);
+  }
+
+  .actions .btn{
+    flex:1;
+    justify-content:center;
+  }
+
+  .bottom-nav{
+    bottom:8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <div class="brand" onclick="showPage('home')">
+      <div class="brand-mark">L</div>
+
+      <div class="brand-text">
+        <strong>PelzLex</strong>
+        <span>A NEW WORD · EVERY DAY</span>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" onclick="showPage('library')" title="Search">⌕</button>
+      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">☾</button>
+    </div>
+
+  </div>
+</header>
+
+
+<main>
+
+<!-- ================= HOME ================= -->
+
+<section class="page active" id="home">
+
+  <div class="hero">
+
+    <div>
+      <div class="eyebrow">
+        <span class="dot"></span>
+        WORD OF THE DAY
+      </div>
+
+      <h1>
+        Discover a new
+        <span>word.</span>
+        Every day.
+      </h1>
+
+      <p>
+        PelzLex takes you through the alphabet from A to Z,
+        one day and one word at a time.
+      </p>
+    </div>
+
+    <div class="hero-side">
+      <h3>THIS YEAR'S JOURNEY</h3>
+      <div class="big">A → Z</div>
+      <p>26 letters · 12 months · countless words</p>
+    </div>
+
+  </div>
+
+
+  <div class="word-section">
+
+    <div class="word-card">
+
+      <div class="word-content">
+
+        <div class="word-top">
+          <div class="date" id="todayDate"></div>
+          <div class="category-tag" id="letterTag"></div>
+        </div>
+
+        <div class="word-display">
+
+          <div class="word-label">WORD OF THE DAY</div>
+
+          <div class="word" id="wordText">Loading...</div>
+
+          <div class="pronunciation">
+            <code id="pronunciation">/loading/</code>
+            <span class="part" id="partOfSpeech">noun</span>
+          </div>
+
+        </div>
+
+        <div class="definition">
+
+          <h3>Meaning</h3>
+
+          <p id="definition">
+            Discovering today's word...
+          </p>
+
+        </div>
+
+
+        <div class="example">
+
+          <h3>Example</h3>
+
+          <p id="example"></p>
+
+        </div>
+
+
+        <div class="synonyms">
+
+          <h3>Related Words</h3>
+
+          <div class="synonym-list" id="synonyms"></div>
+
+        </div>
+
+
+        <div class="actions">
+
+          <button class="btn btn-primary" onclick="speakWord()">
+            🔊 Listen
+          </button>
+
+          <button class="btn btn-secondary" onclick="shareWord()">
+            ↗ Share
+          </button>
+
+          <button class="btn btn-outline" onclick="saveCurrent()">
+            ♡ Save
+          </button>
+
+          <button class="btn btn-outline" onclick="anotherWord()">
+            ↻ Another Word
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MONTH JOURNEY -->
+
+  <div class="section">
+
+    <div class="section-head">
+      <div>
+        <h2>A Year of Words</h2>
+        <p>Follow the alphabet from January to December.</p>
+      </div>
+    </div>
+
+    <div class="month-grid" id="monthGrid"></div>
+
+  </div>
+
+
+  <!-- ALPHABET -->
+
+  <div class="section">
+
+    <div class="section-head">
+      <div>
+        <h2>The Alphabet</h2>
+        <p>Explore words by letter.</p>
+      </div>
+    </div>
+
+    <div class="alphabet" id="alphabet"></div>
+
+  </div>
+
+
+  <!-- DEVELOPER -->
+
+  <div class="section">
+
+    <div class="about-card">
+
+      <h2>Built with purpose.</h2>
+
+      <p>
+        PelzLex is a daily vocabulary experience designed to make
+        discovering and learning new words simple, beautiful and engaging.
+      </p>
+
+      <div class="developer">
+
+        <strong>Fasinasi Oluwapelumi</strong>
+
+        <span>Founder & Developer — PelzX</span>
+
+        <p style="margin-top:10px;">
+          Tech & Art Creative specializing in graphic design,
+          branding, UI/UX, web design and visual storytelling.
+        </p>
+
+        <p style="margin-top:10px;">
+          <b>Design. Decode. Inspire.</b>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LIBRARY ================= -->
+
+<section class="page" id="library">
+
+  <div class="section-head" style="margin-top:25px;">
+    <div>
+      <h2>Word Library</h2>
+      <p>Search through the PelzLex vocabulary collection.</p>
+    </div>
+  </div>
+
+  <div class="search-box">
+
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search a word..."
+      oninput="searchWords()"
+    >
+
+    <button class="btn btn-primary" onclick="searchWords()">
+      Search
+    </button>
+
+  </div>
+
+  <div class="library-grid" id="libraryGrid"></div>
+
+</section>
+
+
+<!-- ================= AZ PAGE ================= -->
+
+<section class="page" id="az">
+
+  <div class="section-head" style="margin-top:25px;">
+    <div>
+      <h2>A → Z Journey</h2>
+      <p>One year. Twenty-six letters.</p>
+    </div>
+  </div>
+
+  <div class="about-card" style="margin-bottom:25px;">
+
+    <h2>A Year of Words</h2>
+
+    <p>
+      Every year, PelzLex journeys through the English alphabet.
+      January begins with A, and by December the journey reaches Z.
+      Each day brings another opportunity to discover a new word.
+    </p>
+
+  </div>
+
+  <div class="month-grid" id="monthGrid2"></div>
+
+</section>
+
+
+<!-- ================= SAVED ================= -->
+
+<section class="page" id="saved">
+
+  <div class="section-head" style="margin-top:25px;">
+    <div>
+      <h2>Saved Words</h2>
+      <p>Your personal vocabulary collection.</p>
+    </div>
+  </div>
+
+  <div class="library-grid" id="savedGrid"></div>
+
+</section>
+
+
+<!-- ================= MORE ================= -->
+
+<section class="page" id="more">
+
+  <div class="section-head" style="margin-top:25px;">
+    <div>
+      <h2>PelzLex</h2>
+      <p>Learn more about the project.</p>
+    </div>
+  </div>
+
+  <div class="about-card">
+
+    <h2>A → Z · A Year of Words</h2>
+
+    <p>
+      PelzLex is a daily vocabulary platform built around a simple idea:
+      learn something new every day.
+    </p>
+
+    <br>
+
+    <p>
+      The yearly journey begins with A in January and moves through
+      the alphabet until Z arrives in December.
+    </p>
+
+    <div class="developer">
+
+      <strong>Fasinasi Oluwapelumi</strong>
+
+      <span>Founder & Developer — PelzX</span>
+
+      <p style="margin-top:12px;">
+        PelzX is a Tech & Art Creative focused on graphic design,
+        branding, UI/UX, web design and visual storytelling.
+      </p>
+
+      <p style="margin-top:12px;">
+        Email:
+        <a
+          href="mailto:fasinasiakinbolarinwa@gmail.com"
+          style="color:#9be7b1;"
+        >
+          fasinasiakinbolarinwa@gmail.com
+        </a>
+      </p>
+
+      <p>
+        WhatsApp:
+        <a
+          href="https://wa.me/2349074956155"
+          style="color:#9be7b1;"
+        >
+          09074956155
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <p>
+    <strong>PelzLex</strong> · A New Word. Every Day.
+  </p>
+
+  <p style="margin-top:5px;">
+    Built & Developed by Fasinasi Oluwapelumi · PelzX
+  </p>
+
+  <p style="margin-top:5px;">
+    Design. Decode. Inspire.
+  </p>
+
+</footer>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+  <button class="nav-item active" onclick="showPage('home',this)">
+    <span class="nav-icon">⌂</span>
+    Home
+  </button>
+
+  <button class="nav-item" onclick="showPage('az',this)">
+    <span class="nav-icon">A→Z</span>
+    Journey
+  </button>
+
+  <button class="nav-item" onclick="showPage('library',this)">
+    <span class="nav-icon">⌕</span>
+    Library
+  </button>
+
+  <button class="nav-item" onclick="showPage('saved',this)">
+    <span class="nav-icon">♡</span>
+    Saved
+  </button>
+
+  <button class="nav-item" onclick="showPage('more',this)">
+    <span class="nav-icon">•••</span>
+    More
+  </button>
+
+</nav>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   PELZLEX
+   A → Z · A YEAR OF WORDS
+   ========================================================= */
+
+
+/* ================= WORD DATABASE ================= */
+
+const words = [
+
+{
+word:"Abate",
+pronunciation:"/əˈbeɪt/",
+part:"verb",
+meaning:"To become less strong, intense, or severe.",
+example:"The heavy rain began to abate before sunset.",
+synonyms:["lessen","decrease","diminish"],
+letter:"A"
+},
+
+{
+word:"Aberration",
+pronunciation:"/ˌæbəˈreɪʃən/",
+part:"noun",
+meaning:"Something that differs from what is normal or expected.",
+example:"The unusual result was considered an aberration.",
+synonyms:["anomaly","deviation","irregularity"],
+letter:"A"
+},
+
+{
+word:"Acumen",
+pronunciation:"/ˈækjʊmən/",
+part:"noun",
+meaning:"The ability to make good judgments and quick decisions.",
+example:"Her business acumen helped the company grow.",
+synonyms:["insight","wisdom","judgment"],
+letter:"A"
+},
+
+{
+word:"Adroit",
+pronunciation:"/əˈdrɔɪt/",
+part:"adjective",
+meaning:"Skillful or clever in using the hands or mind.",
+example:"He gave an adroit response to the difficult question.",
+synonyms:["skillful","clever","capable"],
+letter:"A"
+},
+
+{
+word:"Alacrity",
+pronunciation:"/əˈlækrəti/",
+part:"noun",
+meaning:"Cheerful readiness or eagerness.",
+example:"She accepted the opportunity with alacrity.",
+synonyms:["eagerness","enthusiasm","readiness"],
+letter:"A"
+},
+
+{
+word:"Benevolent",
+pronunciation:"/bəˈnevələnt/",
+part:"adjective",
+meaning:"Showing kindness and a desire to help others.",
+example:"The benevolent organization supported local students.",
+synonyms:["kind","generous","charitable"],
+letter:"B"
+},
+
+{
+word:"Brevity",
+pronunciation:"/ˈbrevəti/",
+part:"noun",
+meaning:"The quality of expressing something clearly in few words.",
+example:"The brevity of his speech made it memorable.",
+synonyms:["conciseness","shortness","simplicity"],
+letter:"B"
+},
+
+{
+word:"Candid",
+pronunciation:"/ˈkændɪd/",
+part:"adjective",
+meaning:"Truthful and direct, especially about something difficult.",
+example:"She gave a candid opinion about the project.",
+synonyms:["honest","frank","open"],
+letter:"C"
+},
+
+{
+word:"Clarity",
+pronunciation:"/ˈklærəti/",
+part:"noun",
+meaning:"The quality of being clear and easy to understand.",
+example:"The presentation explained the idea with remarkable clarity.",
+synonyms:["clearness","precision","simplicity"],
+letter:"C"
+},
+
+{
+word:"Diligent",
+pronunciation:"/ˈdɪlɪdʒənt/",
+part:"adjective",
+meaning:"Showing careful and persistent effort.",
+example:"The diligent student completed the assignment early.",
+synonyms:["hardworking","careful","dedicated"],
+letter:"D"
+},
+
+{
+word:"Eloquent",
+pronunciation:"/ˈeləkwənt/",
+part:"adjective",
+meaning:"Fluent or persuasive in speaking or writing.",
+example:"Her eloquent explanation made the subject easy to understand.",
+synonyms:["expressive","articulate","persuasive"],
+letter:"E"
+},
+
+{
+word:"Foster",
+pronunciation:"/ˈfɒstə/",
+part:"verb",
+meaning:"To encourage the development or growth of something.",
+example:"Good leaders foster creativity within their teams.",
+synonyms:["encourage","support","promote"],
+letter:"F"
+},
+
+{
+word:"Gratitude",
+pronunciation:"/ˈɡrætɪtjuːd/",
+part:"noun",
+meaning:"The feeling of being thankful and appreciative.",
+example:"He expressed gratitude for the support he received.",
+synonyms:["thankfulness","appreciation","recognition"],
+letter:"G"
+},
+
+{
+word:"Humble",
+pronunciation:"/ˈhʌmbəl/",
+part:"adjective",
+meaning:"Having a modest view of one's importance or abilities.",
+example:"Despite his success, he remained humble.",
+synonyms:["modest","unassuming","meek"],
+letter:"H"
+},
+
+{
+word:"Insight",
+pronunciation:"/ˈɪnsaɪt/",
+part:"noun",
+meaning:"A deep understanding of a person, situation, or subject.",
+example:"The discussion gave me new insight into the problem.",
+synonyms:["understanding","awareness","perception"],
+letter:"I"
+},
+
+{
+word:"Jubilant",
+pronunciation:"/ˈdʒuːbɪlənt/",
+part:"adjective",
+meaning:"Feeling or expressing great happiness and triumph.",
+example:"The team was jubilant after the victory.",
+synonyms:["joyful","delighted","triumphant"],
+letter:"J"
+},
+
+{
+word:"Keen",
+pronunciation:"/kiːn/",
+part:"adjective",
+meaning:"Very interested, enthusiastic, or eager.",
+example:"She is keen to learn new skills.",
+synonyms:["eager","enthusiastic","enthused"],
+letter:"K"
+},
+
+{
+word:"Lucid",
+pronunciation:"/ˈluːsɪd/",
+part:"adjective",
+meaning:"Clear and easy to understand.",
+example:"He gave a lucid explanation of the concept.",
+synonyms:["clear","intelligible","understandable"],
+letter:"L"
+},
+
+{
+word:"Meticulous",
+pronunciation:"/məˈtɪkjələs/",
+part:"adjective",
+meaning:"Very careful and precise about details.",
+example:"The designer was meticulous about every detail.",
+synonyms:["careful","thorough","precise"],
+letter:"M"
+},
+
+{
+word:"Nurture",
+pronunciation:"/ˈnɜːtʃə/",
+part:"verb",
+meaning:"To encourage growth, development, or confidence.",
+example:"Good teachers nurture curiosity in their students.",
+synonyms:["cultivate","encourage","develop"],
+letter:"N"
+},
+
+{
+word:"Optimism",
+pronunciation:"/ˈɒptɪmɪzəm/",
+part:"noun",
+meaning:"A hopeful and positive way of viewing the future.",
+example:"Her optimism helped the team remain focused.",
+synonyms:["hopefulness","positivity","confidence"],
+letter:"O"
+},
+
+{
+word:"Pragmatic",
+pronunciation:"/præɡˈmætɪk/",
+part:"adjective",
+meaning:"Dealing with problems in a practical and realistic way.",
+example:"They adopted a pragmatic approach to the challenge.",
+synonyms:["practical","realistic","sensible"],
+letter:"P"
+},
+
+{
+word:"Quintessential",
+pronunciation:"/ˌkwɪntɪˈsenʃəl/",
+part:"adjective",
+meaning:"Representing the most typical or perfect example of something.",
+example:"The building is a quintessential example of modern design.",
+synonyms:["typical","classic","representative"],
+letter:"Q"
+},
+
+{
+word:"Resilient",
+pronunciation:"/rɪˈzɪliənt/",
+part:"adjective",
+meaning:"Able to recover and continue after difficulty.",
+example:"The resilient team continued working toward its goal.",
+synonyms:["strong","tough","adaptable"],
+letter:"R"
+},
+
+{
+word:"Serendipity",
+pronunciation:"/ˌserənˈdɪpəti/",
+part:"noun",
+meaning:"The occurrence of something valuable or interesting by chance.",
+example:"Meeting her future mentor was a moment of serendipity.",
+synonyms:["chance","fortune","discovery"],
+letter:"S"
+},
+
+{
+word:"Tenacious",
+pronunciation:"/təˈneɪʃəs/",
+part:"adjective",
+meaning:"Determined and persistent in pursuing something.",
+example:"His tenacious approach eventually produced results.",
+synonyms:["persistent","determined","resolute"],
+letter:"T"
+},
+
+{
+word:"Ubiquitous",
+pronunciation:"/juːˈbɪkwɪtəs/",
+part:"adjective",
+meaning:"Present or found everywhere.",
+example:"Smartphones have become ubiquitous in modern life.",
+synonyms:["everywhere","universal","omnipresent"],
+letter:"U"
+},
+
+{
+word:"Versatile",
+pronunciation:"/ˈvɜːsətaɪl/",
+part:"adjective",
+meaning:"Able to adapt to many different activities or purposes.",
+example:"She is a versatile designer who works across many styles.",
+synonyms:["adaptable","flexible","multitalented"],
+letter:"V"
+},
+
+{
+word:"Wisdom",
+pronunciation:"/ˈwɪzdəm/",
+part:"noun",
+meaning:"The ability to use knowledge and experience to make good decisions.",
+example:"Experience often brings wisdom.",
+synonyms:["insight","understanding","judgment"],
+letter:"W"
+},
+
+{
+word:"Xenial",
+pronunciation:"/ˈziːniəl/",
+part:"adjective",
+meaning:"Relating to hospitality or friendship toward guests.",
+example:"The host was known for his xenial nature.",
+synonyms:["hospitable","welcoming","friendly"],
+letter:"X"
+},
+
+{
+word:"Yearn",
+pronunciation:"/jɜːn/",
+part:"verb",
+meaning:"To have a strong desire or longing for something.",
+example:"She yearned to explore new possibilities.",
+synonyms:["long","desire","crave"],
+letter:"Y"
+},
+
+{
+word:"Zeal",
+pronunciation:"/ziːl/",
+part:"noun",
+meaning:"Great energy, enthusiasm, or passion for something.",
+example:"He approached the project with remarkable zeal.",
+synonyms:["enthusiasm","passion","eagerness"],
+letter:"Z"
+}
+
+];
+
+
+/* ================= MONTH SYSTEM ================= */
+
+const months = [
+
+{
+name:"January",
+letters:"A–B"
+},
+
+{
+name:"February",
+letters:"C–D"
+},
+
+{
+name:"March",
+letters:"E–F"
+},
+
+{
+name:"April",
+letters:"G–H"
+},
+
+{
+name:"May",
+letters:"I–J"
+},
+
+{
+name:"June",
+letters:"K–L"
+},
+
+{
+name:"July",
+letters:"M–N"
+},
+
+{
+name:"August",
+letters:"O–P"
+},
+
+{
+name:"September",
+letters:"Q–R"
+},
+
+{
+name:"October",
+letters:"S–T"
+},
+
+{
+name:"November",
+letters:"U–W"
+},
+
+{
+name:"December",
+letters:"X–Z"
+}
+
+];
+
+
+/* ================= STATE ================= */
+
+let currentWord = null;
+
+let savedWords =
+JSON.parse(localStorage.getItem("pelzlex_saved") || "[]");
+
+let historyWords =
+JSON.parse(localStorage.getItem("pelzlex_history") || "[]");
+
+
+/* ================= DATE ================= */
+
+function getDate(){
+
+  const now = new Date();
+
+  return now.toLocaleDateString("en-US",{
+    weekday:"long",
+    month:"long",
+    day:"numeric",
+    year:"numeric"
+  });
+
+}
+
+
+/* ================= MONTH LETTERS ================= */
+
+function getMonthLetters(monthIndex){
+
+  return months[monthIndex].letters;
+
+}
+
+
+/* ================= DAILY WORD ================= */
+
+function getDailyWord(){
+
+  const now = new Date();
+
+  const month = now.getMonth();
+
+  const day = now.getDate();
+
+  const letters = getMonthLetters(month);
+
+  let pool =
+  words.filter(w =>
+    letters.includes(w.letter)
+  );
+
+  if(!pool.length){
+    pool = words;
+  }
+
+  const index =
+    (day - 1) % pool.length;
+
+  return pool[index];
+
+}
+
+
+/* ================= RENDER WORD ================= */
+
+function renderWord(word){
+
+  if(!word) return;
+
+  currentWord = word;
+
+  document.getElementById("wordText").textContent =
+    word.word;
+
+  document.getElementById("pronunciation").textContent =
+    word.pronunciation;
+
+  document.getElementById("partOfSpeech").textContent =
+    word.part;
+
+  document.getElementById("definition").textContent =
+    word.meaning;
+
+  document.getElementById("example").textContent =
+    `"${word.example}"`;
+
+  document.getElementById("todayDate").textContent =
+    getDate();
+
+  const month =
+    months[new Date().getMonth()];
+
+  document.getElementById("letterTag").textContent =
+    `${month.name} · ${month.letters}`;
+
+  const synonyms =
+    document.getElementById("synonyms");
+
+  synonyms.innerHTML = "";
+
+  word.synonyms.forEach(item => {
+
+    const span =
+      document.createElement("span");
+
+    span.className = "synonym";
+
+    span.textContent = item;
+
+    synonyms.appendChild(span);
+
+  });
+
+}
+
+
+/* ================= HISTORY ================= */
+
+function addHistory(word){
+
+  historyWords =
+    historyWords.filter(
+      w => w.word !== word.word
+    );
+
+  historyWords.unshift(word);
+
+  historyWords =
+    historyWords.slice(0,100);
+
+  localStorage.setItem(
+    "pelzlex_history",
+    JSON.stringify(historyWords)
+  );
+
+}
+
+
+/* ================= SAVE ================= */
+
+function saveCurrent(){
+
+  if(!currentWord) return;
+
+  const exists =
+    savedWords.some(
+      w => w.word === currentWord.word
+    );
+
+  if(exists){
+
+    savedWords =
+      savedWords.filter(
+        w => w.word !== currentWord.word
+      );
+
+    showToast("Removed from saved words");
+
+  }else{
+
+    savedWords.push(currentWord);
+
+    showToast("Word saved ✓");
+
+  }
+
+  localStorage.setItem(
+    "pelzlex_saved",
+    JSON.stringify(savedWords)
+  );
+
+  renderSaved();
+
+}
+
+
+/* ================= ANOTHER WORD ================= */
+
+function anotherWord(){
+
+  if(!currentWord) return;
+
+  const pool =
+    words.filter(
+      w =>
+        w.letter === currentWord.letter &&
+        w.word !== currentWord.word
+    );
+
+  if(pool.length){
+
+    const random =
+      pool[Math.floor(Math.random()*pool.length)];
+
+    renderWord(random);
+
+    addHistory(random);
+
+    showToast("New word discovered");
+
+  }else{
+
+    showToast("More words coming soon");
+
+  }
+
+}
+
+
+/* ================= SPEECH ================= */
+
+function speakWord(){
+
+  if(!currentWord) return;
+
+  if(!("speechSynthesis" in window)){
+
+    showToast("Speech is not supported");
+
+    return;
+
+  }
+
+  const speech =
+    new SpeechSynthesisUtterance(
+      currentWord.word
+    );
+
+  speech.lang = "en-US";
+
+  window.speechSynthesis.cancel();
+
+  window.speechSynthesis.speak(speech);
+
+}
+
+
+/* ================= SHARE ================= */
+
+async function shareWord(){
+
+  if(!currentWord) return;
+
+  const text =
+`PELZLEX — WORD OF THE DAY
+
+${currentWord.word}
+${currentWord.pronunciation} · ${currentWord.part}
+
+${currentWord.meaning}
+
+Example:
+"${currentWord.example}"
+
+Discover a new word every day with PelzLex.
+
+Built & Developed by Fasinasi Oluwapelumi · PelzX
+Design. Decode. Inspire.`;
+
+  if(navigator.share){
+
+    try{
+
+      await navigator.share({
+        title:`PelzLex — ${currentWord.word}`,
+        text:text
+      });
+
+      return;
+
+    }catch(e){}
+
+  }
+
+  try{
+
+    await navigator.clipboard.writeText(text);
+
+    showToast("Word copied for sharing ✓");
+
+  }catch(e){
+
+    showToast("Unable to share");
+
+  }
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchWords(){
+
+  const query =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+  const grid =
+    document.getElementById("libraryGrid");
+
+  let results = words;
+
+  if(query){
+
+    results =
+      words.filter(w =>
+        w.word.toLowerCase().includes(query) ||
+        w.meaning.toLowerCase().includes(query) ||
+        w.letter.toLowerCase() === query
+      );
+
+  }
+
+  if(!results.length){
+
+    grid.innerHTML =
+      `<div class="empty">
+        No words found for "${query}".
+      </div>`;
+
+    return;
+
+  }
+
+  grid.innerHTML = "";
+
+  results.forEach(word => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "word-item";
+
+    card.innerHTML = `
+      <strong>${word.word}</strong>
+      <small>${word.pronunciation} · ${word.part}</small>
+      <small>${word.meaning}</small>
+    `;
+
+    card.onclick = () => {
+
+      renderWord(word);
+
+      addHistory(word);
+
+      showPage("home");
+
+    };
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* ================= SAVED PAGE ================= */
+
+function renderSaved(){
+
+  const grid =
+    document.getElementById("savedGrid");
+
+  if(!savedWords.length){
+
+    grid.innerHTML =
+      `<div class="empty">
+        You haven't saved any words yet.
+        <br><br>
+        Save words from the Word of the Day.
+      </div>`;
+
+    return;
+
+  }
+
+  grid.innerHTML = "";
+
+  savedWords.forEach(word => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "word-item";
+
+    card.innerHTML = `
+      <strong>${word.word}</strong>
+      <small>${word.pronunciation} · ${word.part}</small>
+      <small>${word.meaning}</small>
+    `;
+
+    card.onclick = () => {
+
+      renderWord(word);
+
+      showPage("home");
+
+    };
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* ================= MONTH CARDS ================= */
+
+function renderMonths(){
+
+  const containers = [
+    document.getElementById("monthGrid"),
+    document.getElementById("monthGrid2")
+  ];
+
+  const currentMonth =
+    new Date().getMonth();
+
+  containers.forEach(container => {
+
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    months.forEach((month,index) => {
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "month" +
+        (index === currentMonth ? " current" : "");
+
+      card.innerHTML = `
+        <div class="month-name">
+          ${month.name}
+        </div>
+
+        <div class="month-letters">
+          ${month.letters}
+        </div>
+
+        <div class="month-status">
+          ${index === currentMonth
+            ? "Current month"
+            : "Alphabet journey"}
+        </div>
+      `;
+
+      card.onclick = () => {
+
+        const letters =
+          month.letters
+            .replace("–","")
+            .split("");
+
+        const found =
+          words.find(w =>
+            letters.includes(w.letter)
+          );
+
+        if(found){
+
+          renderWord(found);
+
+          showPage("home");
+
+        }
+
+      };
+
+      container.appendChild(card);
+
+    });
+
+  });
+
+}
+
+
+/* ================= ALPHABET ================= */
+
+function renderAlphabet(){
+
+  const container =
+    document.getElementById("alphabet");
+
+  const letters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+  container.innerHTML = "";
+
+  letters.forEach(letter => {
+
+    const button =
+      document.createElement("button");
+
+    button.className = "letter";
+
+    button.textContent = letter;
+
+    button.onclick = () => {
+
+      const found =
+        words.find(w =>
+          w.letter === letter
+        );
+
+      if(found){
+
+        renderWord(found);
+
+        addHistory(found);
+
+        showPage("home");
+
+      }else{
+
+        showToast(
+          `More ${letter}-words coming soon`
+        );
+
+      }
+
+    };
+
+    container.appendChild(button);
+
+  });
+
+}
+
+
+/* ================= PAGE NAVIGATION ================= */
+
+function showPage(page, button){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(p =>
+      p.classList.remove("active")
+    );
+
+  const target =
+    document.getElementById(page);
+
+  if(target){
+
+    target.classList.add("active");
+
+  }
+
+  document
+    .querySelectorAll(".nav-item")
+    .forEach(item =>
+      item.classList.remove("active")
+    );
+
+  if(button){
+
+    button.classList.add("active");
+
+  }else{
+
+    const matching =
+      [...document.querySelectorAll(".nav-item")]
+      .find(item =>
+        item.getAttribute("onclick")?.includes(
+          `'${page}'`
+        )
+      );
+
+    if(matching){
+      matching.classList.add("active");
+    }
+
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  if(page === "library"){
+    searchWords();
+  }
+
+  if(page === "saved"){
+    renderSaved();
+  }
+
+}
+
+
+/* ================= THEME ================= */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("dark");
+
+  const dark =
+    document.body.classList.contains("dark");
+
+  localStorage.setItem(
+    "pelzlex_theme",
+    dark ? "dark" : "light"
+  );
+
+  document.getElementById("themeBtn").textContent =
+    dark ? "☀" : "☾";
+
+}
+
+
+/* ================= TOAST ================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(() => {
+
+      toast.classList.remove("show");
+
+    },2200);
+
+}
+
+
+/* ================= INITIALIZE ================= */
+
+function initialize(){
+
+  const savedTheme =
+    localStorage.getItem("pelzlex_theme");
+
+  if(savedTheme === "dark"){
+
+    document.body.classList.add("dark");
+
+    document.getElementById("themeBtn").textContent =
+      "☀";
+
+  }
+
+  renderMonths();
+
+  renderAlphabet();
+
+  renderSaved();
+
+  const daily =
+    getDailyWord();
+
+  renderWord(daily);
+
+  addHistory(daily);
+
+  searchWords();
+
+}
+
+initialize();
+
+</script>
+
+</body>
+</html>
